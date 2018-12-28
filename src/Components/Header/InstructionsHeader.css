@@ -1,7 +1,19 @@
+.InstructionsHeader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
 .InstructionsHeader {
   font-size: 12pt;
   font-weight: normal;
   font-family: Mukta, sans-serif;
   text-align: center;
   flex-grow: 1;
+}
+
+.InstructionsHeader-newwindow:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

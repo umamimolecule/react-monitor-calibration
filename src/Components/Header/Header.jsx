@@ -11,7 +11,7 @@ export default class Header extends Component {
         <CurrentSlideHeader />
         <InstructionsHeader
           text={
-            "Click or press any key to jump to the next slide, or use arrow keys to go back and forward"
+            "Click on window or press any key to jump to the next slide, or use arrow keys to go back and forward"
           }
         />
       </div>

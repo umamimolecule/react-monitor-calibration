@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import T from "prop-types";
-import uuidv4 from "uuid/v4";
 
 import "./Slide.css";
 import ColorBar from "./ColorBar";

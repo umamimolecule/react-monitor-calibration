@@ -1,16 +1,27 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import "./Header.css";
 import CurrentSlideHeader from "./CurrentSlideHeader";
 import InstructionsHeader from "./InstructionsHeader";
 import WhatIsThis from "./WhatIsThis";
+import { showNextSlide, showPreviousSlide } from "../../Actions/slides";
 
-export default class Header extends Component {
+class Header extends Component {
+  onPreviousClick = () => {
+    this.props.showPreviousSlide();
+  };
+
+  onNextClick = () => {
+    this.props.showNextSlide();
+  };
+
   render() {
     return (
       <div className="Header">
         <CurrentSlideHeader />
-        <div class="Header-columns">
+        <div className="Previous" onClick={this.onPreviousClick} />
+        <div className="Header-columns">
           <WhatIsThis />
           <InstructionsHeader
             text={
@@ -18,7 +29,23 @@ export default class Header extends Component {
             }
           />
         </div>
+        <div className="Next" onClick={this.onNextClick} />
       </div>
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  showNextSlide: () => {
+    dispatch(showNextSlide());
+  },
+
+  showPreviousSlide: () => {
+    dispatch(showPreviousSlide());
+  }
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Header);

@@ -1,4 +1,10 @@
-import { SHOW_NEXT_SLIDE, SHOW_PREVIOUS_SLIDE } from "../Actions/slides";
+import uuidv4 from "uuid/v4";
+
+import {
+  SHOW_NEXT_SLIDE,
+  SHOW_PREVIOUS_SLIDE,
+  GOTO_SLIDE
+} from "../Actions/slides";
 
 const black = "#000000";
 const red = "#ff0000";
@@ -57,7 +63,8 @@ const slidesArray = [
 export const initialSlidesState = {
   currentSlideIndex: 0,
   currentSlide: slidesArray[0],
-  slides: slidesArray
+  slides: slidesArray,
+  uniqueId: uuidv4()
 };
 
 export default function slides(state = initialSlidesState, action) {
@@ -65,6 +72,7 @@ export default function slides(state = initialSlidesState, action) {
     case SHOW_NEXT_SLIDE:
       const nextSlideIndex =
         (state.currentSlideIndex + 1) % state.slides.length;
+      updateLocalStorage(nextSlideIndex, state.uniqueId);
       return {
         ...state,
         currentSlideIndex: nextSlideIndex,
@@ -74,12 +82,28 @@ export default function slides(state = initialSlidesState, action) {
       const previousSlideIndex =
         (state.currentSlideIndex - 1 + state.slides.length) %
         state.slides.length;
+      updateLocalStorage(previousSlideIndex, state.uniqueId);
       return {
         ...state,
         currentSlideIndex: previousSlideIndex,
         currentSlide: state.slides[previousSlideIndex]
       };
+    case GOTO_SLIDE:
+      return {
+        ...state,
+        currentSlideIndex: action.index,
+        currentSlide: state.slides[action.index]
+      };
     default:
       return state;
   }
+}
+
+function updateLocalStorage(currentSlideIndex, uniqueId) {
+  var payload = {
+    id: uniqueId,
+    slideIndex: currentSlideIndex,
+    date: Date.now()
+  };
+  window.localStorage.setItem("syncdata", JSON.stringify(payload));
 }

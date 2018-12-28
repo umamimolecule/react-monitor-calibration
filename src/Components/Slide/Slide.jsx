@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import T from "prop-types";
+import uuidv4 from "uuid/v4";
 
 import "./Slide.css";
 import ColorBar from "./ColorBar";
-import { showNextSlide, showPreviousSlide } from "../../Actions/slides";
+import {
+  showNextSlide,
+  showPreviousSlide,
+  gotoSlide
+} from "../../Actions/slides";
 
 class Slide extends Component {
   onKeyPress = e => {
@@ -19,8 +24,21 @@ class Slide extends Component {
     this.props.showNextSlide();
   };
 
+  synchroniseWithOtherPages = () => {
+    var syncData = JSON.parse(window.localStorage.getItem("syncdata"));
+    if (
+      syncData &&
+      syncData.id !== this.props.uniqueId &&
+      syncData.slideIndex !== this.props.currentSlideIndex
+    ) {
+      this.props.gotoSlide(syncData.slideIndex, true);
+    }
+    setTimeout(this.synchroniseWithOtherPages, 200);
+  };
+
   componentDidMount() {
     document.addEventListener("keypress", this.onKeyPress);
+    this.synchroniseWithOtherPages();
   }
 
   componentWillUnmount() {
@@ -43,7 +61,9 @@ Slide.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  colors: state.slides.currentSlide.colors
+  uniqueId: state.slides.uniqueId,
+  colors: state.slides.currentSlide.colors,
+  currentSlideIndex: state.slides.currentSlideIndex
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -53,6 +73,10 @@ const mapDispatchToProps = dispatch => ({
 
   showPreviousSlide: () => {
     dispatch(showPreviousSlide());
+  },
+
+  gotoSlide: index => {
+    dispatch(gotoSlide(index));
   }
 });
 

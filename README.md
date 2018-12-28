@@ -4,7 +4,7 @@ A simple app to display slides of color patterns to help you calibrate multiple 
 ## How to use
 Open the browser page on multiple monitors and hit F11 to go full screen.  Now when you click on each slide, the multiple pages should all be synchronised.
 
-You can use the left and right arrow keys to navigate to the previous and next slids respectively.
+You can use the left and right arrow keys to navigate to the previous and next slides respectively.
 
 ![Screenshot](screenshot.png)
 

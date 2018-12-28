@@ -15,7 +15,7 @@ export default class InstructionsHeader extends Component {
           className="InstructionsHeader-newwindow"
           onClick={this.openInNewWindow}
         >
-          Click here to open page in another window
+          Click here to open this page in a new window
         </div>
         <div className="InstructionsHeader">{this.props.text}</div>
       </div>

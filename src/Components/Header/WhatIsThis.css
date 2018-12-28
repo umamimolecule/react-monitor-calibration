@@ -1,0 +1,16 @@
+.WhatIsThis {
+  word-wrap: none;
+  font-size: 16pt;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.WhatIsThis a {
+  color: white;
+  text-decoration: none;
+}
+
+.WhatIsThis a:hover {
+  text-decoration: underline;
+}

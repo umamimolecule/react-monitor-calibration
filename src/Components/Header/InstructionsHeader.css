@@ -6,7 +6,8 @@
 }
 
 .InstructionsHeader {
-  font-size: 12pt;
+  font-size: 10pt;
+  font-style: italics;
   font-weight: normal;
   font-family: Mukta, sans-serif;
   text-align: center;

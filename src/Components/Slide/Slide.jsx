@@ -12,7 +12,8 @@ import {
 } from "../../Actions/slides";
 
 class Slide extends Component {
-  onKeyPress = e => {
+  onKeyDown = e => {
+    console.log(e);
     if (e.keyCode === 37) {
       this.props.showPreviousSlide();
     } else {
@@ -37,7 +38,7 @@ class Slide extends Component {
   };
 
   componentDidMount() {
-    document.addEventListener("keypress", this.onKeyPress);
+    document.addEventListener("keydown", this.onKeyDown);
     this.synchroniseWithOtherPages();
   }
 

@@ -11,6 +11,10 @@ You can use the left and right arrow keys to navigate to the previous and next s
 
 Having these images side by side will hopefully let you calibrate your monitors, either by using the manual settings on the monitor itself or by using your graphics card utility to adjust the various parameters.
 
+## Website
+
+https://monitorcalibration.azurewebsites.net/
+
 ## How does it synchronise between the different pages?
 It uses browser local storage to update the current slide.  The pages are polling overy 200ms to check whether another page has changed the slide, and if so will then synchronise to show the same page.
 

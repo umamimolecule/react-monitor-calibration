@@ -18,7 +18,7 @@ https://monitorcalibration.azurewebsites.net/
 
 ## How does it synchronise between the different pages?
 
-It uses browser local storage to update the current slide. The pages are polling overy 200ms to check whether another page has changed the slide, and if so will then synchronise to show the same page.
+It uses browser local storage to detect when the current slide has been changed. The pages poll local storage every 200ms to check whether another page has changed the slide, and if so will then synchronise to show the same page.
 
 ## What? I have to manually calibrate my monitors?!
 

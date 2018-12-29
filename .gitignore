@@ -85,3 +85,4 @@ yarn-error.log*
 
 /deploy/temp
 /deploy/config.json
+/deploy/publishsettings.xml

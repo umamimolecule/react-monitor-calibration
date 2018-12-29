@@ -3,19 +3,20 @@
 # File is JSON format:
 #
 # {
-#   "appdirectory": "../build",
 #   "webappname": "YourAzureWebAppName",
 #   "resourceGroup": "YourAzureWebAppResourceGroup",
 #   "location": "YourAzureWebAppLocation (eg Central US)",
 # }
 #
-$json = Get-Content 'config.json' | Out-String | ConvertFrom-Json
-$appdirectory=$json.appdirectory
+$configFile = $PSScriptRoot + "/config.json"
+$json = Get-Content $configFile | Out-String | ConvertFrom-Json
 $webappname=$json.webappname
 $resourceGroup=$json.resourceGroup
 $location=$json.location
 
-$packageFolder = "./temp";
+$appdirectory=$PSScriptRoot + "/../build"
+
+$packageFolder = $PSScriptRoot + "/temp";
 $package = $packageFolder + "/package.zip"
 
 if(!(Test-Path -Path $packageFolder))
@@ -31,6 +32,9 @@ if (Test-Path $package)
 }
 Compress-Archive -Path $appdirectory/* -CompressionLevel Fastest -DestinationPath $package
 
+# Log into Azure account
+# Connect-AzureRmAccount
+
 # Create a resource group
 #New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
@@ -41,11 +45,13 @@ Compress-Archive -Path $appdirectory/* -CompressionLevel Fastest -DestinationPat
 #New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroup
 
 # Get publishing profile for the web app
-$xml = [xml](Get-AzureRmWebAppPublishingProfile -Name $webappname `
--ResourceGroupName $resourceGroup `
--OutputFile null `
--Format WebDeploy `
--ErrorAction Stop)
+# $xml = [xml](Get-AzureRmWebAppPublishingProfile -Name $webappname `
+# -ResourceGroupName $resourceGroup `
+# -OutputFile null `
+# -Format WebDeploy `
+# -ErrorAction Stop)
+$publishSettingsPath = $PSScriptRoot + "/publishsettings.xml"
+$xml = Get-Content $publishSettingsPath -Raw | Out-String
 
 # Extract connection information from publishing profile
 $username = ([xml]$xml).SelectNodes("//publishProfile[@publishMethod=`"MSDeploy`"]/@userName").value

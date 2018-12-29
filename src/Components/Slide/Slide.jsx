@@ -38,7 +38,7 @@ class Slide extends Component {
 
   componentDidMount() {
     document.addEventListener("keydown", this.onKeyDown);
-    this.synchroniseWithOtherPages();
+    setTimeout(this.synchroniseWithOtherPages, 1000);
   }
 
   componentWillUnmount() {

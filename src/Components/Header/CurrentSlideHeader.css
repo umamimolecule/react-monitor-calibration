@@ -3,6 +3,8 @@
   flex-shrink: 0;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  padding: 20px;
+  padding: 10px;
   vertical-align: middle;
+  min-width: 180px;
+  text-align: center;
 }

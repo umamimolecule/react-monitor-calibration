@@ -89,10 +89,14 @@ export default function slides(state = initialSlidesState, action) {
         currentSlide: state.slides[previousSlideIndex]
       };
     case GOTO_SLIDE:
+      let index = action.index;
+      if (index < 0 || index >= state.slides.length) {
+        index = 0;
+      }
       return {
         ...state,
-        currentSlideIndex: action.index,
-        currentSlide: state.slides[action.index]
+        currentSlideIndex: index,
+        currentSlide: state.slides[index]
       };
     default:
       return state;

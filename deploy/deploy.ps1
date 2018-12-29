@@ -14,7 +14,14 @@ $appdirectory=$json.appdirectory
 $webappname=$json.webappname
 $resourceGroup=$json.resourceGroup
 $location=$json.location
-$package="./temp/package.zip"
+
+$packageFolder = "./temp";
+$package = $packageFolder + "/package.zip"
+
+if(!(Test-Path -Path $packageFolder))
+{
+    New-Item -ItemType directory -Path $packageFolder | Out-Null
+}
 
 # Remove zip file if it already exists
 echo "Packaging build folder..."
@@ -62,6 +69,10 @@ Invoke-Expression $commandLine
 if (Test-Path $package) 
 {
   Remove-Item $package
+}
+if(Test-Path -Path $packageFolder)
+{
+    Remove-Item $packageFolder
 }
 
 echo "Done!"

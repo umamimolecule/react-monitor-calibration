@@ -28,9 +28,10 @@ Which will first do a production build, then upload to your Azure site.
 
 The build script expects two files to be present in the deploy folder.  Because these two files contains sensitive data it should never be checked into source control, and hence is masked from Git via the .gitignore file.
 
-### config.json
-Contains details about the web app in Azure (resource group and web app name).
+If you want to deploy your app to Azure, you'll need to manually add these two files to your `deploy` folder:
 
+### config.json
+Contains details about the web app in Azure (resource group and web app name).  This is a JSON file which needs to contain three properties:
 ```
 {
   "webappname": "YourWebAppName",

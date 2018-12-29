@@ -4,7 +4,7 @@ A simple app to display slides of color patterns to help you calibrate multiple 
 
 ## Motivation
 
-I have a dual monitor setup, and one day I noticed my monitors were not quite displaying the same colors.  Displaying various colour slides next to each other would help me adjust the monitors to match, so hence this app.  I wanted some way of having two syncrhonised sets of slides on each monitor.
+I have a dual monitor setup, and one day I noticed my monitors were not quite displaying the same colors.  Displaying various colour slides next to each other would help me adjust the monitors to match.  I wanted some way of having two synchronised sets of slides on each monitor, so hence this app.
 
 ## How to use
 

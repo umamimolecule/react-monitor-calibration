@@ -2,6 +2,10 @@
 
 A simple app to display slides of color patterns to help you calibrate multiple monitors. Written using React and Redux as a sample project.
 
+## Motivation
+
+I have a dual monitor setup, and one day I noticed my monitors were not quite displaying the same colors.  Displaying various colour slides next to each other would help me adjust the monitors to match, so hence this app.  I wanted some way of having two syncrhonised sets of slides on each monitor.
+
 ## How to use
 
 Open the browser page on multiple monitors and hit F11 to go full screen. Now when you click on each slide, the multiple pages should all be synchronised.

@@ -14,3 +14,30 @@
 .WhatIsThis a:hover {
   text-decoration: underline;
 }
+
+.WhatIsThis-compact {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("images/whatisthis.png");
+  background-size: 100% 100%;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.WhatIsThis-compact:hover {
+  box-shadow: 0px 0px 10px 0 rgba(255, 255, 255, 1);
+}
+
+.WhatIsThis-compact:active {
+  box-shadow: 0px 0px 5px 0 rgba(255, 255, 255, 0.8);
+}
+
+.WhatIsThis-compact a {
+  text-decoration: none;
+}
+
+.WhatIsThis-compact a:hover {
+  text-decoration: none;
+}

@@ -8,6 +8,11 @@ import WhatIsThis from "./WhatIsThis";
 import { showNextSlide, showPreviousSlide } from "../../Actions/slides";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { width: window.innerWidth };
+  }
+
   onPreviousClick = () => {
     this.props.showPreviousSlide();
   };
@@ -16,13 +21,25 @@ class Header extends Component {
     this.props.showNextSlide();
   };
 
-  render() {
+  onWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
+  };
+
+  componentWillMount() {
+    window.addEventListener("resize", this.onWindowSizeChange);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.onWindowSizeChange);
+  }
+
+  renderNormal() {
     return (
-      <div className="Header-container">
-        <div className="Header">
+      <div className="Header-normal-container">
+        <div className="Header-normal">
           <CurrentSlideHeader />
-          <div className="Previous" onClick={this.onPreviousClick} />
-          <div className="Header-columns">
+          <div className="Previous-normal" onClick={this.onPreviousClick} />
+          <div className="Header-normal-columns">
             <WhatIsThis />
             <InstructionsHeader
               text={
@@ -30,10 +47,35 @@ class Header extends Component {
               }
             />
           </div>
-          <div className="Next" onClick={this.onNextClick} />
+          <div className="Next-normal" onClick={this.onNextClick} />
         </div>
       </div>
     );
+  }
+
+  renderCompact() {
+    return (
+      <div>
+        <div className="Header-compact-container">
+          <div className="Header-compact">
+            <div className="Previous-compact" onClick={this.onPreviousClick} />
+            <CurrentSlideHeader />
+            <div className="Next-compact" onClick={this.onNextClick} />
+          </div>
+        </div>
+        <div className="Footer-compact">
+          <WhatIsThis compact={true} />
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    if (this.state.width <= 1000) {
+      return this.renderCompact();
+    } else {
+      return this.renderNormal();
+    }
   }
 }
 

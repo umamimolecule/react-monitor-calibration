@@ -4,13 +4,15 @@ import "./WhatIsThis.css";
 
 export default class WhatIsThis extends Component {
   render() {
+    const className = this.props.compact ? "WhatIsThis-compact" : "WhatIsThis";
+    const linkText = this.props.compact ? " " : "Monitor Calibration Helper";
     return (
-      <div className="WhatIsThis">
+      <div className={className}>
         <a
           href="https://github.com/umamimolecule/react-monitor-calibration"
           target="__blank"
         >
-          Monitor Calibration Helper
+          {linkText}
         </a>
       </div>
     );

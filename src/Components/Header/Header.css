@@ -1,4 +1,4 @@
-.Header-container {
+.Header-normal-container {
   position: fixed;
   left: 0px;
   right: 0px;
@@ -9,7 +9,7 @@
   justify-content: flex-start;
 }
 
-.Header {
+.Header-normal {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,7 +21,7 @@
   user-select: none;
 }
 
-.Header-columns {
+.Header-normal-columns {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@
   flex-grow: 1;
 }
 
-.Previous {
+.Previous-normal {
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url("images/previous.png");
@@ -39,15 +39,15 @@
   cursor: pointer;
 }
 
-.Previous:hover {
+.Previous-normal:hover {
   background-image: url("images/previoushover.png");
 }
 
-.Previous:active {
+.Previous-normal:active {
   background-image: url("images/previous.png");
 }
 
-.Next {
+.Next-normal {
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url("images/next.png");
@@ -57,10 +57,88 @@
   cursor: pointer;
 }
 
-.Next:hover {
+.Next-normal:hover {
   background-image: url("images/nexthover.png");
 }
 
-.Next:active {
+.Next-normal:active {
   background-image: url("images/next.png");
+}
+
+.Header-compact-container {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Header-compact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: stretch;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  user-select: none;
+}
+
+.Header-compact-columns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.Previous-compact {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("images/previous.png");
+  background-size: 100% 100%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.Previous-compact:hover {
+  background-image: url("images/previoushover.png");
+}
+
+.Previous-compact:active {
+  background-image: url("images/previous.png");
+}
+
+.Next-compact {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("images/next.png");
+  background-size: 100% 100%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.Next-compact:hover {
+  background-image: url("images/nexthover.png");
+}
+
+.Next-compact:active {
+  background-image: url("images/next.png");
+}
+
+.Footer-compact {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

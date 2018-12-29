@@ -12,7 +12,7 @@ curl -X POST -u <user> --data-binary @<zipfile> https://{sitename}.scm.azurewebs
 zipdeploy is intended for fast and easy deployments from development environments, as well as deployment of ready-to-run sites built by continuous integration services such as Visual Studio Team Services. Unlike other Kudu deployment mechanisms, Kudu assumes by default that deployments from zip files are ready to run and do not require additional build steps during deployment, such as npm install or dotnet restore/dotnet publish
 ```
 
-I created a Javascript task to do the following:
+I created a Javascript task `/deploy/deploy.js` to do the following:
  - Zip the contents of the `build` folder
  - Upload the zip file to the to the Kudu service for the web app
  

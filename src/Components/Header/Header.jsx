@@ -18,18 +18,20 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="Header">
-        <CurrentSlideHeader />
-        <div className="Previous" onClick={this.onPreviousClick} />
-        <div className="Header-columns">
-          <WhatIsThis />
-          <InstructionsHeader
-            text={
-              "Click on window or press any key to jump to the next slide, or use arrow keys to go back and forward"
-            }
-          />
+      <div className="Header-container">
+        <div className="Header">
+          <CurrentSlideHeader />
+          <div className="Previous" onClick={this.onPreviousClick} />
+          <div className="Header-columns">
+            <WhatIsThis />
+            <InstructionsHeader
+              text={
+                "Click on window or press any key to jump to the next slide, or use arrow keys to go back and forward"
+              }
+            />
+          </div>
+          <div className="Next" onClick={this.onNextClick} />
         </div>
-        <div className="Next" onClick={this.onNextClick} />
       </div>
     );
   }

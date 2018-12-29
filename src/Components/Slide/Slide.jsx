@@ -12,7 +12,6 @@ import {
 
 class Slide extends Component {
   onKeyDown = e => {
-    console.log(e);
     if (e.keyCode === 37) {
       this.props.showPreviousSlide();
     } else {
@@ -37,6 +36,14 @@ class Slide extends Component {
   };
 
   componentDidMount() {
+    // Fix for IE not sharing local storage across tabs/windows
+    // https://stackoverflow.com/a/42377129
+    window.onstorage = function(e) {
+      //Leave this empty
+      //or add code to handle
+      //the event
+    };
+
     document.addEventListener("keydown", this.onKeyDown);
     setTimeout(this.synchroniseWithOtherPages, 1000);
   }

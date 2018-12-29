@@ -12,4 +12,33 @@ zipdeploy is intended for fast and easy deployments from development environment
 
 ## Notes
 
-The build script expects a publishsettings.xml file to be present in the `deploy` folder. Because this file contains senstivie data it should never be checked into source control, and hence is masked from Git.
+The build script expects two files to be present in the deploy folder.  Because these two files contains sensitive data it should never be checked into source control, and hence is masked from Git via the .gitignore file.
+
+### config.json
+Contains details about the web app in Azure (resource group and web app name).
+
+```
+{
+  "webappname": "YourWebAppName",
+  "resourceGroup": "YourWebAppResourceGroup",
+  "location": "Central US (or whatever region your app resource group is in"
+}
+```
+
+### publishsettings.xml
+Contains details to access your web app in Azure.  You can get this file by clicking the Get Publish Profile link in the Azure portal for your web app:
+
+![Screenshot](getpublishprofile.png)
+
+Download it and copy to the `deploy` folder with the name `publishsettings.xml`.
+
+Example contents:
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile profileName="YourWebApp - Web Deploy" publishMethod="MSDeploy" publishUrl="yourwebapp.scm.azurewebsites.net:443" msdeploySite="YourWebApp" userName="$YourWebAppUserName" userPWD="thepassword" destinationAppUrl="http://yourwebapp.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites">
+    <databases />
+  </publishProfile>
+</publishData>
+```

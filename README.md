@@ -12,7 +12,7 @@ Open the browser page on multiple monitors and hit F11 to go full screen. Now wh
 
 You can use the left and right arrow keys to navigate to the previous and next slides respectively.
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.gif)
 
 Having these images side by side will hopefully let you calibrate your monitors, either by using the manual settings on the monitor itself or by using your graphics card utility to adjust the various parameters.
 

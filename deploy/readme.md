@@ -15,6 +15,14 @@ zipdeploy is intended for fast and easy deployments from development environment
 I created a Javascript task to do the following:
  - Zip the contents of the `build` folder
  - Upload the zip file to the to the Kudu service for the web app
+ 
+This can be execute by running the following:
+
+```
+npm run deploy
+```
+
+Which will first do a production build, then upload to your Azure site.
 
 ## Notes
 
